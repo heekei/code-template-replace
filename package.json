@@ -2,8 +2,8 @@
     "name": "code-template-replace",
     "displayName": "code Template Replace",
     "description": "replace your own code snippet",
-    "version": "0.1.0",
-    "publisher": "Heekei",
+    "version": "0.1.1",
+    "publisher": "heekei",
     "engines": {
         "vscode": "^1.5.0"
     },

@@ -4,7 +4,7 @@
 
 * input your customized replacement
 
-        like this:
+    like this:
         ```
         {{replacementName}}
         ```
