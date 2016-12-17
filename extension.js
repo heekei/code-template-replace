@@ -9,7 +9,7 @@ function activate(context) {
         if (!editor) { return; }
         // let fname = editor.document.fileName.substring(0, editor.document.fileName.lastIndexOf("."));
         let ename = editor.document.fileName.substring(editor.document.fileName.lastIndexOf("."), editor.document.fileName.length);
-        let getConfig = vscode.workspace.getConfiguration;
+        // let getConfig = vscode.workspace.getConfiguration;
         // let config = getConfig("codeReplace");
         // let templates = config.templates;
         let res = editor.document.getText().match(/\{\{([^}}]+)?\}\}/g);//["{{key}}","{{key1}}"]
