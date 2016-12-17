@@ -2,12 +2,12 @@
     "name": "code-template-replace",
     "displayName": "code Template Replace",
     "description": "replace your own code snippet",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "publisher": "heekei",
     "engines": {
         "vscode": "^1.5.0"
     },
-    "icon": "",
+    "icon": "images/icon.ico",
     "bugs": {
 		"url": "https://github.com/heekei/code-template-replace/issues",
 		"email": "heekei@foxmail.com"
