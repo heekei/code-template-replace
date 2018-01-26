@@ -6,9 +6,7 @@ let fs = require("fs");
 function activate(context) {
     let codeReplace = vscode.commands.registerCommand("extension.codeReplace", function () {
         let editor = vscode.window.activeTextEditor;
-        if (!editor) {
-            return;
-        }
+        if (!editor) return;
         // let fname = editor.document.fileName.substring(0, editor.document.fileName.lastIndexOf("."));
         let ename = editor.document.fileName.substring(editor.document.fileName.lastIndexOf("."), editor.document.fileName.length);
         // let getConfig = vscode.workspace.getConfiguration;
@@ -35,17 +33,6 @@ function activate(context) {
         }).then(function (res) {
             console.log(res, errorArr);
         });
-        // res.map(function (value) {
-        //     let text = editor.document.getText();
-        //     let prop = value.replace(/[\{|\}]/g, ""); //key
-        //     let start = editor.document.positionAt(text.indexOf(value));
-        //     let end = editor.document.positionAt(text.indexOf(value) + value.length);
-        //     let range = new vscode.Range(start, end);
-        //     // var data = fs.readFileSync(vscode.workspace.rootPath + "/templates/" + prop + ename)
-        //     // console.log(data)
-
-        //     let filestr = fs.readFileSync(vscode.workspace.rootPath + "/ctr-tmps/" + prop + ename);
-        // })
     })
     context.subscriptions.push(codeReplace);
 }
