@@ -8,7 +8,7 @@
         ```
         {{replacementName}}
         ```
-* and create a replace file in folder 'templates' 
+* and create a replace file in folder `ctr-tmps` 
 
 * **warning:** the filename extension of created file must be now your active document's filename extension .
 
