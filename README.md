@@ -24,7 +24,7 @@
         </html>
     ```
 
-    And I should create a "header.html" in "templates" folder;
+    And I should create a "header.html" in `"ctr-tmps"` folder;
     ```html
         <div class="header">
             This is Header part.
