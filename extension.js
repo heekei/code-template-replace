@@ -12,14 +12,13 @@ function activate(context) {
         // let getConfig = vscode.workspace.getConfiguration;
         // let config = getConfig("codeReplace");
         // let templates = config.templates;
-        let res = editor.document.getText().match(/\{\{([^}}]+)?\}\}/g); //["{{key}}","{{key1}}"]
-        // let reg = new RegExp(/\{\{(\w+?)\}\}/g);
+        let res = editor.document.getText().match(/\{\{(((?!}}).)+)\}\}/g); //["{{key}}","{{key1}}"]
 
         let errorArr = [];
         editor.edit(function (builder) {
             res.map(function (value) {
                 let text = editor.document.getText();
-                let prop = value.replace(/[\{|\}]/g, ""); //key
+                let prop = value.replace(/[{}\s]/g, ""); //key
                 let start = editor.document.positionAt(text.indexOf(value));
                 let end = editor.document.positionAt(text.indexOf(value) + value.length);
                 let range = new vscode.Range(start, end);
