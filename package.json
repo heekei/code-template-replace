@@ -12,7 +12,7 @@
         "url": "https://github.com/heekei/code-template-replace/issues",
         "email": "heekei@foxmail.com"
     },
-    "homepage": "http://www.heekei.cn",
+    "homepage": "https://h-os.online",
     "repository": {
         "type": "git",
         "url": "https://github.com/heekei/code-template-replace.git"
@@ -47,7 +47,6 @@
         "mocha": "^2.3.3",
         "eslint": "^3.6.0",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32",
-        "fs": "4.4.0"
+        "@types/mocha": "^2.2.32"
     }
 }

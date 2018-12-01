@@ -9,26 +9,44 @@ function activate(context) {
         let res = editor.document.getText().match(/\{\{(((?!}}).)+)\}\}/g); //["{{key}}","{{key1}}"]
 
         let errorArr = [];
+        let cacheObj = {};
         editor.edit(function (builder) {
             res.map(function (value) {
                 let text = editor.document.getText();
                 let prop = value.replace(/[{}\s]/g, ""); //key
                 let start = editor.document.positionAt(text.indexOf(value));
                 let end = editor.document.positionAt(text.indexOf(value) + value.length);
-                let range = new vscode.Range(start, end);
+                let range = editor.document.validateRange(new vscode.Range(start, end));
+                // editor.document.getWordRangeAtPosition();
+
+                let path = prop + ename;
                 try {
-                    let filestr = fs.readFileSync(`${vscode.workspace.rootPath}/ctr-tmps/${prop}${ename}`);
-                    builder.replace(range, filestr.toString());
+                    if (cacheObj[path]) {
+                        builder.replace(range, cacheObj[path]);
+                    } else {
+                        let filestr = fs.readFileSync(`${vscode.workspace.rootPath}/ctr-tmps/${path}`).toString();
+                        cacheObj[path] = filestr;
+                        builder.replace(range, filestr);
+                        // fs.readFile(`${vscode.workspace.rootPath}/ctr-tmps/${prop}${ename}`,(err,filestr)=>{
+                        //     filestr = filestr.toString();
+                        //     cacheObj[`${prop}${ename}`] = filestr;
+                        //     builder.replace(range, filestr);
+                        // })
+                    }
                 } catch (error) {
+                    console.warn('error: ', error);
                     errorArr.push(prop);
                 }
             })
         }).then(function (res) {
-            console.log(res, errorArr);
+            console.log(...errorArr);
+        }, err => {
+            console.log('err: ', err);
         });
     })
     context.subscriptions.push(codeReplace);
 }
 exports.activate = activate;
+
 function deactivate() {}
 exports.deactivate = deactivate;
