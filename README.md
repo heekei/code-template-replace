@@ -1,36 +1,41 @@
-# code-template-replace README
+# Usage  
+1. Create your fragment file `header.html` in `ctr-tmps` folder
+```html
+<div class="header">
+    This is Header part.
+</div>
+```
 
-## Usage:
+2. Then do it like following
+```html
+<html>
+<head></head>
+<body>
+{{header}}
+</body>
+</html>
+```
 
-* input your customized replacement
+### Result  
+```html
+<html>
+<head></head>
+<body>
+    <div class="header">
+        This is Header part.
+    </div>
+</body>
+</html>
+```
 
-    like this:
-        ```
-        {{replacementName}}
-        ```
-* and create a replace file in folder `ctr-tmps` 
+# FAQ  
 
-* **warning:** the filename extension of created file must be now your active document's filename extension .
+## File extension-name
 
-* Example:
+If source file ext is `.js` , frag file ext must be `.js`
 
-    Now,I'm coding a html file,
-    ```html
-        <html>
-        <head></head>
-        <body>
-            {{header}}
-        </body>
-        </html>
-    ```
-
-    And I should create a "header.html" in `"ctr-tmps"` folder;
-    ```html
-        <div class="header">
-            This is Header part.
-        </div>
-    ```
-
-    Then I can Press F1, and input "Code Replace" to replace "{{header}}" into the content of "header.html".
-
-    Surely, I also could Press key "Ctrl + Alt + 0" to Active the extension;
+## Multi-level filepath
+```
+{{parentFolder/childFolder/filename}}
+```
+It will replace the frag from `ctr-tmps/parentFolder/childFolder/filename.*` 
